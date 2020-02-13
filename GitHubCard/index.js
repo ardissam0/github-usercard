@@ -5,15 +5,15 @@
 
 const cards = document.querySelector('.cards');
 
-// axios.get('https://api.github.com/users/ardissam0')
-// .then(response => {
-//   console.log(response.data);
-//   const card = createComponent(response.data);
-//   cards.append(card);
-// })
-//   .catch(err => {
-//   console.log(err);
-// });
+axios.get('https://api.github.com/users/ardissam0')
+.then(response => {
+  console.log(response.data);
+  const card = createComponent(response.data);
+  cards.append(card);
+})
+  .catch(err => {
+  console.log(err);
+});
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
@@ -74,7 +74,7 @@ return card;
 /* Step 4: Pass the data received from Github into your function, 
            create a new component and add it to the DOM as a child of .cards
 */
-cards.append(createComponent(gitUser));
+
 
 /* Step 5: Now that you have your own card getting added to the DOM, either 
           follow this link in your browser https://api.github.com/users/<Your github name>/followers 
@@ -88,24 +88,20 @@ cards.append(createComponent(gitUser));
 
 const followersArray = [];
 
-const get2 = axios.get('https://api.github.com/users/ardissam0/followers');
-get2.then(response => {
+axios.get('https://api.github.com/users/ardissam0/followers')
+.then(response => {
   console.log(response.data);
-  response.data.map(item => {
+  response.data.forEach(item => {
     followersArray.push(item)
     })
+    followersArray.forEach(item => {
+      cards.appendChild(createComponent(item));
+    });
   });
 
   console.log(followersArray);
 
-  followersArray.then(response => {
-    response.data.map(item => {
-      cards.append(createComponent(item));
-    })
-  })
-  .catch(err => {
-  console.log(err);
-});
+ 
 
 /* List of LS Instructors Github username's: 
   tetondan
