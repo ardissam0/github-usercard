@@ -92,10 +92,13 @@ axios.get('https://api.github.com/users/ardissam0/followers')
 .then(response => {
   console.log(response.data);
   response.data.forEach(item => {
-    followersArray.push(item)
+    followersArray.push(item.url)
     })
-    followersArray.forEach(item => {
-      cards.appendChild(createComponent(item));
+  followersArray.forEach(item => {
+      axios.get(item)
+      .then(response => {
+        cards.appendChild(createComponent(response.data));
+      })
     });
   });
 
