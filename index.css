@@ -59,7 +59,7 @@ html {
   font-size: 62.5%;
 }
 body {
-  background: linear-gradient(141deg, #9fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+  background: slategray;
 }
 .container {
   max-width: 800px;
@@ -96,8 +96,9 @@ body {
   padding: 20px;
   display: flex;
   border-radius: 5px;
-  box-shadow: 0 1px 6px -2px #000;
-  background-color: #FFF;
+  box-shadow: 0 1px 6px -2px black;
+  background-color: black;
+  color: white;
   margin-bottom: 30px;
 }
 
